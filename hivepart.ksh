@@ -26,3 +26,4 @@ echo "LOAD DATA LOCAL INPATH '$1/$filenm' OVERWRITE INTO TABLE $2 PARTITION (dat
 done
 echo "loading hive table"
 hive -f $1/partload.hql
+echo "Script completed"
