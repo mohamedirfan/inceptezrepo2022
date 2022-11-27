@@ -28,25 +28,9 @@ echo "$filenm"
 dt=`echo $filenm |awk -F'_' '{print $2}'`
 dtfmt=`date -d $dt +'%Y-%m-%d'`
 echo $dtfmt
-
 reg=`echo $filenm |awk -F'_' '{print $3}'`
 echo $reg
-
 echo "LOAD DATA LOCAL INPATH '$1/$filenm' OVERWRITE INTO TABLE $2 PARTITION (datadt='$dtfmt',region='$reg');" >> $1/partload.hql
 done
-
-
-#cp /home/hduser/hivepart/partload.hql /home/hduser/partload.hql
-
 echo "loading hive table"
 hive -f $1/partload.hql
-
-
-
-
-
-
-
-
-
-
